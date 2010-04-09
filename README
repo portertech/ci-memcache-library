@@ -1,0 +1,35 @@
+This is the Memcached library I created for Insurance Contacts, used to get a performance boost. The library 
+is based on the multicache library created by Elliot Haughin.
+
+To use, put Cache.php in your CodeIgniter application/libraries/ folder.
+
+Usage:
+
+// Load the library
+$this->load->library('cache');
+
+function get_result($queryString){
+
+	// Generate a hash
+	$hash = md5($queryString);
+
+	// Check to see if the result is already cached
+	if(!($result = $this->cache->get($hash))){
+
+		// If its not cached, query the database
+		$query = $this->db->query("SELECT * FROM table WHERE something = '".$queryString."'");
+
+		// Cache it using the hash generated above
+		$this->cache->set($hash, $query->result());
+
+		// Return the result of the database query this time
+		return $query->result();
+
+	// If the result was already cached, return its value
+	} else return $result;
+
+}
+
+Cache away!
+
+Sean Porter
