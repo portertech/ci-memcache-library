@@ -1,5 +1,4 @@
-This is the Memcached library I created for Insurance Contacts, used to get a performance boost. The library 
-is based on the multicache library created by Elliot Haughin.
+This library is based on the multicache library created by Elliot Haughin.
 
 To use, put Cache.php in your CodeIgniter application/libraries/ folder.
 
@@ -30,6 +29,4 @@ function get_result($queryString){
 
 }
 
-Cache away!
-
-Sean Porter
+That's it.
